@@ -71,9 +71,8 @@
   visualize_mass_vs_year(meteorite_df, save_path='visualization.png')
   ```
 
-  ```html
-  <img src="templates/plt_imgs/visualization.png" alt="可视化图表">
-  ```
+  ![可视化图表](./templates/plt_imgs/visualization.png)
+
 
 ### 5. K-Means 聚类结果可视化
 - 运行 `main.py` 中的 `visualize_kmeans_clusters` 函数，该函数将展示 K-Means 聚类结果的散点图。
