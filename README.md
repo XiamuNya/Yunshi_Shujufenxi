@@ -6,7 +6,7 @@
 陨石落地数据分析项目旨在通过对 NASA 提供的陨石落地数据集进行深入分析，揭示陨石质量、年份与地理位置等属性之间的关系，以及通过聚类和建模方法洞察数据的潜在规律。通过此项目，我们将展示数据科学在探索天体事件方面的应用，从而更好地理解陨石落地事件的分布和特征。
 
 ## 数据集
-- 数据集来源：[NASA's Open Data Portal](https://data.nasa.gov/Space-Science/Meteorite-Landings/gh4g-9sfh)
+- 数据集来源：[NASA's 开放数据平台](https://data.nasa.gov/Space-Science/Meteorite-Landings/gh4g-9sfh)
 - 数据集名：`Meteorite_Landings.csv`
 - 数据集文件路径(相对)：`templates/data/Meteorite_Landings.csv`
 
@@ -18,6 +18,7 @@
 - `main.py`: 主函数，整合数据处理、建模和可视化的流程。
 
 ## 使用说明
+
 1. **安装依赖：** 确保已安装所需的 Python 库，可以通过运行以下命令安装：
 
     ```bash
@@ -72,10 +73,8 @@
   # 可视化陨石质量与年份关系，并保存图表
   visualize_mass_vs_year(meteorite_df, save_path='visualization.png')
   ```
+  ![可视化图表](./templates/plt_imgs/visualization.png)
 
-  ```html
-  <img src="templates/plt_imgs/visualization.png" alt="可视化图表">
-  ```
 
 ### 5. K-Means 聚类结果可视化
 - 运行 `main.py` 中的 `visualize_kmeans_clusters` 函数，该函数将展示 K-Means 聚类结果的散点图。
@@ -83,8 +82,9 @@
   # main.py
 
   # 聚类结果可视化
-  visualize_kmeans_clusters(meteorite_df)
+  visualize_kmeans_clusters(meteorite_df, save_path='templates/plt_imgs/visualize_kmeans_clusters.png')
   ```
+  ![可视化图表](./templates/plt_imgs/visualize_kmeans_clusters.png)
 
 ### 6. 相关性矩阵热力图
 - 运行 `main.py` 中的 `visualize_correlation_heatmap` 函数，该函数将计算相关性矩阵并绘制热力图。
@@ -92,8 +92,9 @@
   # main.py
 
   # 相关性矩阵热力图
-  visualize_correlation_heatmap(meteorite_df)
+  visualize_correlation_heatmap(meteorite_df, save_path='templates/plt_imgs/visualize_correlation_heatmap.png')
   ```
+  ![可视化图表](./templates/plt_imgs/visualize_correlation_heatmap.png)
 
 ### 7. 模型训练和评估
 - 运行 `main.py` 中的 `train_and_evaluate_model` 函数，该函数将使用线性回归模型进行陨石质量预测，并展示预测结果及均方误差。
@@ -101,8 +102,9 @@
   # main.py
 
   # 模型训练和评估
-  train_and_evaluate_model(meteorite_df)
+  train_and_evaluate_model(meteorite_df, save_path='templates/plt_imgs/train_and_evaluate_model.png')
   ```
+  ![可视化图表](./templates/plt_imgs/train_and_evaluate_model.png)
 
 ### 8. 结论和进一步分析
 - 根据以上步骤的结果，得出结论并进行进一步分析，考虑模型的有效性和可解释性。
@@ -138,4 +140,6 @@
 ### 五、根据结论得出最终结果
 12. **可视化陨石质量与年份关系：** 利用可视化手段展示陨石质量与年份的关系，以便更直观地理解数据。
 13. **分析聚类结果，制定相应的结论：** 对 K-Means 聚类结果进行分析，根据不同聚类的特点制定相应的结论。
+
+
 
