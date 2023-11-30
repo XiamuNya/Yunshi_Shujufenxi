@@ -1,7 +1,7 @@
 # 陨石落地数据分析项目
 
-### 来自人工2班程毅辉 此代码开源，如需取用，请在2023/12/10后，谢谢。
-
+### 项目归属
+#### 厦门中软国际 A区开发五 ChengYiHui 此代码开源，如需取用，请在2023/12/10后，谢谢。
 ## 项目概述
 陨石落地数据分析项目旨在通过对 NASA 提供的陨石落地数据集进行深入分析，揭示陨石质量、年份与地理位置等属性之间的关系，以及通过聚类和建模方法洞察数据的潜在规律。通过此项目，我们将展示数据科学在探索天体事件方面的应用，从而更好地理解陨石落地事件的分布和特征。
 
@@ -64,6 +64,42 @@
   # 数据标准化
   meteorite_df = standardize_data(meteorite_df)
   ```
+
+### **(新增)**  在数据标准化下，创建算法模型对象，并进行算法模型训练，接下去完成模型性能评估（分数评估，报告评估）
+- 在 `data_processing.py` 中添加数据标准化后的功能
+- ```python
+  def standardize_and_train_model(df):
+      ...
+  ```
+  
+- 在 `modeling.py` 中添加数据标准化后的功能
+- ```python
+  from sklearn.metrics import r2_score, mean_absolute_error
+
+  def evaluate_model_performance(model, X_test, y_test):
+      ...
+  ```
+
+- 在 `main.py` 中添加数据标准化后的功能
+- ```python
+  if __name__ == "__main__":
+    file_path = 'templates/data/Meteorite_Landings.csv'
+
+    # 加载和探索数据
+    meteorite_df = load_and_explore_data(file_path)
+
+    # 数据清洗
+    meteorite_df = clean_data(meteorite_df)
+
+    # 数据标准化并训练模型
+    model, X_test, y_test = standardize_and_train_model(meteorite_df)
+
+    # 评估模型性能
+    evaluate_model_performance(model, X_test, y_test)
+
+    # 其他功能...
+  ```
+
 
 ### 4. 陨石质量与年份关系可视化
 - 运行 `main.py` 中的 `visualize_mass_vs_year` 函数，该函数将展示陨石质量与年份关系的散点图。
