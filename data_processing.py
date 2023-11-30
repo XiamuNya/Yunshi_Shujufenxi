@@ -1,4 +1,6 @@
 import pandas as pd
+from sklearn.linear_model import LinearRegression
+from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
 
 '''数据处理文件'''
@@ -54,3 +56,31 @@ def standardize_data(df):
     # 对'mass (g)'列进行标准化
     df[['mass (g)']] = scaler.fit_transform(df[['mass (g)']])
     return df
+
+def standardize_and_train_model(df):
+    """
+    标准化数据，创建线性回归模型并进行训练。
+
+    Parameters:
+    - df (pd.DataFrame): 包含数据的DataFrame
+
+    Returns:
+    - model: 训练好的线性回归模型
+    """
+    # 标准化数据
+    df = standardize_data(df)
+
+    # 创建线性回归模型
+    model = LinearRegression()
+
+    # 特征选择
+    X = df[['year']]
+    y = df['mass (g)']
+
+    # 划分训练集和测试集
+    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+
+    # 训练模型
+    model.fit(X_train, y_train)
+
+    return model, X_test, y_test

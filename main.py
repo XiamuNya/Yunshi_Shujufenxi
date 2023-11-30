@@ -1,10 +1,10 @@
 '''主函数'''
 import warnings
-from data_processing import load_and_explore_data, clean_data, standardize_data
+from data_processing import load_and_explore_data, clean_data, standardize_data, standardize_and_train_model
 from visualization import (
     visualize_mass_vs_year, visualize_correlation_heatmap, visualize_kmeans_clusters
 )
-from modeling import train_and_evaluate_model
+from modeling import train_and_evaluate_model, evaluate_model_performance
 from matplotlib import pyplot as plt
 
 # 忽略FutureWarning
@@ -23,7 +23,13 @@ if __name__ == "__main__":
     # 数据清洗
     meteorite_df = clean_data(meteorite_df)
 
-    # 数据标准化
+    # 数据标准化并训练模型
+    model, X_test, y_test = standardize_and_train_model(meteorite_df)
+
+    # 评估模型性能
+    evaluate_model_performance(model, X_test, y_test)
+
+    # 数据标准化（完成可视化）
     meteorite_df = standardize_data(meteorite_df)
 
     # 可视化陨石质量与年份关系

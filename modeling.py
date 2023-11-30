@@ -4,6 +4,8 @@ from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LinearRegression
 from sklearn.metrics import mean_squared_error
 import matplotlib.pyplot as plt
+from sklearn.metrics import r2_score, mean_absolute_error
+
 
 
 def train_and_evaluate_model(df, save_path=None):
@@ -46,3 +48,25 @@ def train_and_evaluate_model(df, save_path=None):
     if save_path:
         plt.savefig(save_path)
     plt.show()
+
+
+
+def evaluate_model_performance(model, X_test, y_test):
+    """
+    评估模型性能，打印 R^2 分数和平均绝对误差。
+
+    Parameters:
+    - model: 训练好的模型
+    - X_test: 测试集特征
+    - y_test: 测试集目标值
+    """
+    # 模型预测
+    y_pred = model.predict(X_test)
+
+    # 计算 R^2 分数
+    r2 = r2_score(y_test, y_pred)
+    print(f'R^2 分数: {r2}')
+
+    # 计算平均绝对误差
+    mae = mean_absolute_error(y_test, y_pred)
+    print(f'平均绝对误差: {mae}')
