@@ -7,7 +7,6 @@ import matplotlib.pyplot as plt
 from sklearn.metrics import r2_score, mean_absolute_error
 
 
-
 def train_and_evaluate_model(df, save_path=None):
     """
        使用线性回归模型对陨石质量进行预测，并可视化预测结果。
